@@ -17,8 +17,8 @@ namespace Bakery.CodeBase.ServiceLayer
                 return query.Execute();
             }
             catch (Exception exc)
-            {
-                //ToDo: implement NLog
+            {                
+                Console.WriteLine(exc);
                 return default(T);
             }
         }
@@ -33,6 +33,71 @@ namespace Bakery.CodeBase.ServiceLayer
         public static Employee GetEmployee(int ID)
         {
             var query = new GetEmployeeQuery(ID);
+            return handleQuery(query);
+        }
+        #endregion
+
+        #region TypeEmploymentContract
+        public static List<TypeEmploymentContract> GetAllTypeEmploymentContract()
+        {
+            var query = new GetAllTypesEmploymentContractsQuery();
+            return handleQuery(query);
+        }
+        public static TypeEmploymentContract GetTypeEmploymentContract(int ID)
+        {
+            var query = new GetTypeEmploymentContractQuery(ID);
+            return handleQuery(query);
+        }
+        #endregion
+
+        #region Product
+        public static List<Product> GetAllProducts()
+        {
+            var query = new GetAllProductsQuery();
+            return handleQuery(query);
+        }
+        public static Product GetProduct(int ID)
+        {
+            var query = new GetProductQuery(ID);
+            return handleQuery(query);
+        }
+        #endregion
+
+        #region BakeryPoint
+        public static List<BakeryPoint> GetAllBakeryPoint()
+        {
+            var query = new GetAllBakeryPointsQuery();
+            return handleQuery(query);
+        }
+        public static BakeryPoint GetBakeryPoint(int ID)
+        {
+            var query = new GetBakeryPointQuery(ID);
+            return handleQuery(query);
+        }
+        #endregion
+
+        #region Car
+        public static List<Car> GetAllCars()
+        {
+            var query = new GetAllCarsQuery();
+            return handleQuery(query);
+        }
+        public static Car GetCar(int ID)
+        {
+            var query = new GetCarQuery(ID);
+            return handleQuery(query);
+        }
+        #endregion
+
+        #region Stove
+        public static List<Stove> GetAllStoves()
+        {
+            var query = new GetAllStovesQuery();
+            return handleQuery(query);
+        }
+        public static Stove GetStove(int ID)
+        {
+            var query = new GetStoveQuery(ID);
             return handleQuery(query);
         }
         #endregion

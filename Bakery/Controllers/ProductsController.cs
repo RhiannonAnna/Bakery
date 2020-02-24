@@ -8,37 +8,32 @@ using Microsoft.AspNetCore.Mvc;
 using Bakery.CodeBase.DataLayer;
 using Bakery.Entities;
 using Bakery.CodeBase.ServiceLayer;
+using Microsoft.AspNetCore.Cors;
 
 namespace Bakery.Controllers
 {
-    [Route("api/employee")]
+    [Route("api/products")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         [Route(""), HttpGet]
-        public List<Employee> GetAllEmployee()
+        public List<Product> GetAllProducts()
         {
-            return MainService.GetAllEmployees();
+            return MainService.GetAllProducts();
         }
 
         [Route("{ID}"), HttpGet]
-        public Employee GetSingleEmployee([FromRoute] int ID)
+        public Product GetSingleProduct([FromRoute] int ID)
         {
-            return MainService.GetEmployee(ID);
+            return MainService.GetProduct(ID);
         }
 
         [Route(""), HttpPost]
-        public int InsertEmployee([FromBody] Employee employee)
-        {
-            return MainService.InsertEmployee(employee);
-        }
-
-        [Route(""), HttpPut]
-        public IActionResult UpdateEmployee([FromBody] Employee employee)
+        public IActionResult InsertProduct([FromBody] Product product)
         {
             try
             {
-                MainService.UpdateEmployee(employee);
+                MainService.InsertProduct(product);
                 return Ok();
             }
             catch (Exception exc)
@@ -46,13 +41,27 @@ namespace Bakery.Controllers
                 return new ObjectResult(exc) { StatusCode = 500 };
             }
         }
+        
 
-        [Route("{ID}"), HttpDelete]
-        public IActionResult DeleteEmployee([FromRoute] int ID)
+        [Route(""), HttpPut]
+        public IActionResult UpdateProduct([FromBody] Product product)
         {
             try
             {
-                MainService.DeleteEmployee(ID);
+                MainService.UpdateProduct(product);
+                return Ok();
+            }
+            catch (Exception exc)
+            {
+                return new ObjectResult(exc) { StatusCode = 500 };
+            }
+        }
+        [Route("{ID}"), HttpDelete]
+        public IActionResult DeleteProduct([FromRoute] int ID)
+        {
+            try
+            {
+                MainService.DeleteProduct(ID);
                 return Ok();
             }
             catch (Exception exc)

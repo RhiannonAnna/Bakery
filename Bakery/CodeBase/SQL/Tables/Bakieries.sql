@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Bakeries]
+(
+	[Id] TINYINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    [City] NVARCHAR(50) NOT NULL,  
+    [Description] NVARCHAR(500) NULL, 
+    [Address] NVARCHAR(50) NOT NULL
+)

@@ -18,7 +18,7 @@ namespace Bakery.CodeBase.ServiceLayer.Commands
         }
         public void Execute()
         {
-            string sqlQuery = "UPDATE [Employee] SET Name = @Name, Gender = @Gender, TypeIdEmploymentContract = @TypeIdEmploymentContract WHERE Id = @Id";
+            string sqlQuery = "UPDATE [Employees] SET Name = @Name, IsMen = @IsMen, TypeIdEmploymentContract = @TypeIdEmploymentContract WHERE Id = @Id";
             using (SqlConnection sqlConn = new SqlConnection(MainRepository.ConnectionString))
             {
                 if (sqlConn.State != ConnectionState.Open) sqlConn.Open();
@@ -27,9 +27,9 @@ namespace Bakery.CodeBase.ServiceLayer.Commands
                 sqlComm.Parameters.Add("@" + Employee.IdDatabaseColumnName, SqlDbType.Int).Value = employee.Id;
                 sqlComm.Parameters.Add("@" + Employee.AgeDatabaseColumnName, SqlDbType.TinyInt).Value = employee.Age;
                 sqlComm.Parameters.Add("@" + Employee.NameDatabaseColumnName, SqlDbType.NVarChar).Value = employee.Name;
-                sqlComm.Parameters.Add("@" + Employee.GenderDatabaseColumnName, SqlDbType.Bit).Value = employee.Gender;
+                sqlComm.Parameters.Add("@" + Employee.IsMenDatabaseColumnName, SqlDbType.Bit).Value = employee.IsMen;
                 sqlComm.Parameters.Add("@" + Employee.StartTimeEmploymentColumnName, SqlDbType.DateTime).Value = employee.StartTimeEmployment;
-                sqlComm.Parameters.Add("@" + Employee.TypeIdEmploymentContractColumnName, SqlDbType.DateTime).Value = employee.TypeIdEmploymentContract;
+                sqlComm.Parameters.Add("@" + Employee.TypeIdEmploymentContractColumnName, SqlDbType.TinyInt).Value = employee.TypeIdEmploymentContract;
                 sqlComm.ExecuteNonQuery();
             }
         }
