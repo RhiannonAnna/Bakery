@@ -8,12 +8,12 @@ using System.Data.SqlClient;
 
 namespace Bakery.CodeBase.DataLayer.Queries
 {
-    public class GetAllEmployeesQuery : IQuery<List<Employee>>
+    public class GetAllTypesEmploymentContractsQuery : IQuery<List<TypeEmploymentContract>>
     {
-        public List<Employee> Execute()
+        public List<TypeEmploymentContract> Execute()
         {
-            string sqlQuery = "SELECT * FROM [Employees]";
-            List<Employee> employees = new List<Employee>();
+            string sqlQuery = "SELECT * FROM [TypeEmploymentContracts]";
+            List<TypeEmploymentContract> typeEmploymentContracts = new List<TypeEmploymentContract>();
             using (SqlConnection sqlConn = new SqlConnection(MainRepository.ConnectionString))
             {
                 if (sqlConn.State != ConnectionState.Open) sqlConn.Open();
@@ -23,11 +23,11 @@ namespace Bakery.CodeBase.DataLayer.Queries
                 {
                     while (r.Read())
                     {
-                        employees.Add(MainService.GetSingleEmployee(r));
+                        typeEmploymentContracts.Add(MainService.GetSingleTypeEmploymentContract(r));
                     }
                 }
             }
-            return employees;
+            return typeEmploymentContracts;
         }
     }
 }

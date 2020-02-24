@@ -11,7 +11,7 @@ namespace Bakery.Entities
         public int Id { get; set; }
         public int Age { get; set; }
         public string Name { get; set; }
-        public bool Gender { get; set; }
+        public bool IsMen { get; set; }
         public DateTime StartTimeEmployment { get; set; }
         public int TypeIdEmploymentContract { get; set; }
         #endregion
@@ -19,7 +19,7 @@ namespace Bakery.Entities
         public static string IdDatabaseColumnName = "Id";
         public static string AgeDatabaseColumnName = "Age";
         public static string NameDatabaseColumnName = "Name";
-        public static string GenderDatabaseColumnName = "Gender";
+        public static string IsMenDatabaseColumnName = "IsMen";
         public static string StartTimeEmploymentColumnName = "StartTimeEmployment";
         public static string TypeIdEmploymentContractColumnName = "TypeIdEmploymentContract";
         #endregion

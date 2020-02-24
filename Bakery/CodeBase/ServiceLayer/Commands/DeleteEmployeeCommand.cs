@@ -19,7 +19,7 @@ namespace Bakery.CodeBase.ServiceLayer.Commands
             }
             public void Execute()
             {
-                string sqlQuery = "DELETE FROM [Employee] WHERE Id=@Id";
+                string sqlQuery = "DELETE FROM [Employees] WHERE Id=@Id";
                 using (SqlConnection sqlConn = new SqlConnection(MainRepository.ConnectionString))
                 {
                     if (sqlConn.State != ConnectionState.Open) sqlConn.Open();
